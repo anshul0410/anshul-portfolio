@@ -27,7 +27,7 @@ Open http://localhost:3000. The API is at http://localhost:4000/api/health.
 | Script              | What it does                          |
 | ------------------- | ------------------------------------- |
 | `npm run dev`       | Run API and web together              |
-| `npm run build`     | Production build of both apps         |
+| `npm run build`     | Production build of both apps (the API must be running — the homepage is prerendered from it) |
 | `npm run typecheck` | TypeScript checks across workspaces   |
 | `npm test`          | API tests (Node test runner)          |
 
@@ -58,4 +58,4 @@ Content lives in `apps/api/src/data/` — edit `profile.ts`, `skills.ts` and `wo
 - [x] Add a Selected work section
 - [ ] Add an Experience timeline
 - [ ] Contact form endpoint (`POST /api/contact`) with rate limiting
-- [ ] Deploy (see [docs/TECH_STACK.md](docs/TECH_STACK.md))
+- [ ] Deploy: web on Vercel, API on Render via `render.yaml` (see [docs/TECH_STACK.md](docs/TECH_STACK.md))
