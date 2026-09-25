@@ -31,6 +31,16 @@ Open http://localhost:3000. The API is at http://localhost:4000/api/health.
 | `npm run typecheck` | TypeScript checks across workspaces   |
 | `npm test`          | API tests (Node test runner)          |
 
+## Claude Code MCP servers
+
+`.mcp.json` registers project MCP servers for Claude Code (approve them on first run):
+
+| Server     | Used for                                              |
+| ---------- | ----------------------------------------------------- |
+| `shadcn`   | Browse and add shadcn/ui components to `apps/web`     |
+| `magicui`  | Animated Magic UI components                          |
+| `context7` | Up-to-date library docs (Next.js 16, Tailwind v4, …)  |
+
 ## API
 
 | Method | Path          | Returns                  |
