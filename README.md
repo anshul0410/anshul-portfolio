@@ -38,12 +38,14 @@ Open http://localhost:3000. The API is at http://localhost:4000/api/health.
 | GET    | `/api/health` | `{ status, uptime }`     |
 | GET    | `/api/profile`| Name, summary, about, highlights, links |
 | GET    | `/api/skills` | Skill categories         |
+| GET    | `/api/work`   | Selected work (one featured) |
 
-Content lives in `apps/api/src/data/` — edit `profile.ts` and `skills.ts` to update the site.
+Content lives in `apps/api/src/data/` — edit `profile.ts`, `skills.ts` and `work.ts` to update the site.
 
 ## TODO
 
 - [x] Replace placeholder GitHub / LinkedIn / email links in `apps/api/src/data/profile.ts`
-- [ ] Add Experience and Projects sections
+- [x] Add a Selected work section
+- [ ] Add an Experience timeline
 - [ ] Contact form endpoint (`POST /api/contact`) with rate limiting
 - [ ] Deploy (see [docs/TECH_STACK.md](docs/TECH_STACK.md))

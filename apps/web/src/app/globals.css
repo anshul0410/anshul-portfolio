@@ -2,12 +2,55 @@
 
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+
+  /* Mirrors the "Theme" variables in the Figma redesign file. */
+  --color-ink: #070a13;
+  --color-surface: #0e1322;
+  --color-raised: #151b2e;
+  --color-line: #232b45;
+  --color-fg: #eef1f8;
+  --color-muted: #8e97ad;
   --color-accent: #6366f1;
-  --color-accent-soft: #818cf8;
+  --color-accent-soft: #a5b4fc;
+  --color-cyan: #22d3ee;
+  --color-success: #34d399;
+
+  --animate-drift: drift 20s ease-in-out infinite alternate;
+  --animate-trace: trace 4.5s ease-in-out infinite;
+
+  @keyframes drift {
+    from {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    to {
+      transform: translate3d(48px, 32px, 0) scale(1.08);
+    }
+  }
+
+  /* One agent-card row "lighting up"; rows are staggered with animation-delay. */
+  @keyframes trace {
+    0%,
+    35%,
+    100% {
+      border-color: color-mix(in oklab, var(--row) 35%, transparent);
+      box-shadow: none;
+    }
+    10%,
+    22% {
+      border-color: var(--row);
+      box-shadow: 0 0 24px -6px var(--row);
+    }
+  }
+}
+
+@utility container-page {
+  width: min(70rem, 100% - 2.5rem);
+  margin-inline: auto;
 }
 
 :root {
-  color-scheme: light dark;
+  color-scheme: dark;
 }
 
 html {
@@ -15,5 +58,62 @@ html {
 }
 
 body {
-  @apply bg-white text-slate-800 antialiased dark:bg-slate-950 dark:text-slate-200;
+  @apply bg-ink text-fg antialiased;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-accent) 45%, transparent);
+}
+
+/* Scroll reveal. A <noscript> style in layout.tsx keeps content visible without JS. */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal[data-visible] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Cursor-follow spotlight on cards (position set by SpotlightCard). */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--x, 50%) var(--y, 50%),
+    color-mix(in oklab, var(--color-accent) 16%, transparent),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-drift,
+  .animate-trace {
+    animation: none;
+  }
 }

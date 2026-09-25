@@ -30,3 +30,15 @@ export interface SkillCategory {
   description: string;
   skills: string[];
 }
+
+export interface WorkItem {
+  id: string;
+  eyebrow: string;
+  title: string;
+  summary: string;
+  /** Shown next to the eyebrow on the featured card, e.g. company and role. */
+  meta?: string;
+  metrics?: Highlight[];
+  tags: string[];
+  featured?: boolean;
+}
