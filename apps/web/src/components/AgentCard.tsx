@@ -1,5 +1,5 @@
-// Illustrative trace of the Service Triage orchestrator. Rows light up in
-// sequence via the `trace` keyframes in globals.css.
+// Illustrative trace of the Service Triage orchestrator. On larger screens rows
+// light up in sequence via the `trace` keyframes in globals.css.
 const rows = [
   { label: "customer.intent", detail: "“My laptop won’t charge” + order history", color: "#a5b4fc", depth: 0 },
   { label: "orchestrator.agent", detail: "Gemini on Vertex AI — plans & routes", color: "#6366f1", depth: 0 },
@@ -13,7 +13,7 @@ export function AgentCard() {
   return (
     <figure
       aria-label="Diagram: a customer request flows through an orchestrator agent and sub-agents to a resolution"
-      className="overflow-hidden rounded-[20px] border border-line bg-surface/85 shadow-[0_30px_60px_-10px_rgb(99_102_241/0.25)] backdrop-blur-xl transition duration-500 hover:-translate-y-1 hover:shadow-[0_40px_80px_-10px_rgb(99_102_241/0.35)]"
+      className="overflow-hidden rounded-[20px] border border-line bg-surface/95 shadow-[0_30px_60px_-10px_rgb(99_102_241/0.25)] md:bg-surface/85 md:backdrop-blur-xl transition duration-500 hover:-translate-y-1 hover:shadow-[0_40px_80px_-10px_rgb(99_102_241/0.35)]"
     >
       <div className="flex items-center gap-2 border-b border-line px-4 py-3">
         <span className="size-2.5 rounded-full bg-red-400/80" />
@@ -25,7 +25,7 @@ export function AgentCard() {
         {rows.map((row, i) => (
           <li
             key={row.label}
-            className="flex animate-trace items-center gap-3 rounded-xl border bg-raised py-2.5 pr-3"
+            className="flex items-center gap-3 rounded-xl border border-[color-mix(in_oklab,var(--row)_35%,transparent)] bg-raised py-2.5 pr-3 md:animate-trace"
             style={
               {
                 "--row": row.color,

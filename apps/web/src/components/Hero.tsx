@@ -19,12 +19,15 @@ function Tagline({ text }: { text: string }) {
   );
 }
 
+const glow = (rgb: string, alpha: number) => ({ "--glow": `rgb(${rgb} / ${alpha})` }) as React.CSSProperties;
+
 function Backdrop() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 -top-24 overflow-hidden">
-      <div className="absolute top-[-160px] left-[12%] h-[420px] w-[620px] animate-drift rounded-full bg-accent/35 blur-[160px]" />
-      <div className="absolute top-10 right-[5%] h-[380px] w-[520px] animate-drift rounded-full bg-cyan/15 blur-[160px] [animation-delay:-7s]" />
-      <div className="absolute top-[420px] left-[36%] h-[260px] w-[420px] animate-drift rounded-full bg-violet-500/20 blur-[140px] [animation-delay:-13s]" />
+      {/* Gradient glows (not blur filters) so phones can scroll smoothly; they only drift on larger screens. */}
+      <div className="glow absolute top-[-320px] left-[2%] h-[740px] w-[940px] md:animate-drift" style={glow("99 102 241", 0.35)} />
+      <div className="glow absolute top-[-120px] right-[-6%] h-[700px] w-[840px] md:animate-drift [animation-delay:-7s]" style={glow("34 211 238", 0.15)} />
+      <div className="glow absolute top-[280px] left-[26%] h-[540px] w-[700px] md:animate-drift [animation-delay:-13s]" style={glow("139 92 246", 0.2)} />
       <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-line)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-line)_1px,transparent_1px)] bg-size-[64px_64px] opacity-30 mask-[radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
     </div>
   );

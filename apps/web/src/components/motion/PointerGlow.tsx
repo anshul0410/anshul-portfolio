@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-/** A blurred glow that eases toward the pointer inside its positioned parent. */
+/** A soft glow that eases toward the pointer inside its positioned parent. */
 export function PointerGlow() {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -22,7 +22,7 @@ export function PointerGlow() {
     const tick = () => {
       pos.x += (target.x - pos.x) * 0.08;
       pos.y += (target.y - pos.y) * 0.08;
-      el.style.transform = `translate3d(${pos.x - 260}px, ${pos.y - 200}px, 0)`;
+      el.style.transform = `translate3d(${pos.x - 380}px, ${pos.y - 320}px, 0)`;
       frame = requestAnimationFrame(tick);
     };
 
@@ -38,7 +38,8 @@ export function PointerGlow() {
     <div
       ref={ref}
       aria-hidden
-      className="pointer-events-none absolute top-0 left-0 hidden h-[400px] w-[520px] rounded-full bg-accent/20 blur-[120px] md:block"
+      className="glow pointer-events-none absolute top-0 left-0 hidden h-[640px] w-[760px] md:block"
+      style={{ "--glow": "rgb(99 102 241 / 0.2)" } as React.CSSProperties}
     />
   );
 }

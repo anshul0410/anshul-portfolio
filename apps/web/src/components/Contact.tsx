@@ -12,7 +12,11 @@ export function Contact({ profile }: { profile: Profile }) {
     <section id="contact" className="container-page scroll-mt-24 py-20 sm:py-28">
       <Reveal>
         <div className="relative overflow-hidden rounded-[2rem] border border-indigo-400/40 bg-[linear-gradient(135deg,#312e81,#1e1b4b_55%,#0e3a48)] px-6 py-16 text-center sm:px-16 sm:py-[72px]">
-          <div aria-hidden className="pointer-events-none absolute -top-44 left-1/2 h-[300px] w-[500px] -translate-x-1/2 rounded-full bg-cyan/25 blur-[120px]" />
+          <div
+            aria-hidden
+            className="glow pointer-events-none absolute -top-64 left-1/2 h-[540px] w-[740px] -translate-x-1/2"
+            style={{ "--glow": "rgb(34 211 238 / 0.25)" } as React.CSSProperties}
+          />
           <div className="relative flex flex-col items-center gap-6">
             <Eyebrow className="text-cyan">Let&apos;s talk</Eyebrow>
             <h2 className="max-w-[720px] text-4xl font-bold tracking-[-0.03em] text-fg sm:text-[52px] sm:leading-[1.1]">

@@ -37,7 +37,8 @@ export function Reveal({
           observer.disconnect();
         }
       },
-      { threshold: 0.15 },
+      // Start ~15% of a screen early so content is already fading in as it arrives.
+      { rootMargin: "0px 0px 15% 0px" },
     );
     observer.observe(el);
     return () => observer.disconnect();
