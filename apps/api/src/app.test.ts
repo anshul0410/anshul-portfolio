@@ -39,6 +39,14 @@ describe("portfolio API", () => {
     assert.ok(Array.isArray(body) && body.length > 0);
   });
 
+  it("GET /api/work returns exactly one featured item", async () => {
+    const res = await fetch(`${base}/api/work`);
+    assert.equal(res.status, 200);
+    const body = await res.json();
+    assert.ok(Array.isArray(body) && body.length > 0);
+    assert.equal(body.filter((item: { featured?: boolean }) => item.featured).length, 1);
+  });
+
   it("unknown routes return 404 JSON", async () => {
     const res = await fetch(`${base}/api/nope`);
     assert.equal(res.status, 404);

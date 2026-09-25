@@ -28,3 +28,14 @@ export interface SkillCategory {
   description: string;
   skills: string[];
 }
+
+export interface WorkItem {
+  id: string;
+  eyebrow: string;
+  title: string;
+  summary: string;
+  meta?: string;
+  metrics?: Highlight[];
+  tags: string[];
+  featured?: boolean;
+}
