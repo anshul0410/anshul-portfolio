@@ -17,6 +17,7 @@ export const profile: Profile = {
     "I also enjoy the people side of engineering — mentoring engineers, leading the team, and writing the docs and processes that make everyone faster.",
   ],
   highlights: [
+    { value: "$67.5M", label: "Revenue contribution thanks to Service Triage" },
     { value: "$20–25M", label: "Annual support cost saved by Service Triage" },
     { value: "8M+", label: "Customers a year across 5 touchpoints" },
     { value: "~1B", label: "Requests handled at holiday peak" },
