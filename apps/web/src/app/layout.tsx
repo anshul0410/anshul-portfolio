@@ -24,10 +24,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${jetbrains.variable}`}>
       <body className="font-sans">
-        {/* Scroll-reveal content starts hidden; show it all when JS is off. */}
-        <noscript>
-          <style>{".reveal{opacity:1!important;transform:none!important}"}</style>
-        </noscript>
         {children}
       </body>
     </html>

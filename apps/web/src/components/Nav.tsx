@@ -39,7 +39,7 @@ export function Nav({ name }: { name: string }) {
 
   return (
     <header className="sticky top-0 z-50 flex justify-center px-4 pt-6 pb-2">
-      <nav className="flex items-center gap-6 rounded-full border border-line bg-surface/70 py-2 pr-2 pl-3 shadow-[0_10px_30px_rgb(0_0_0/0.35)] backdrop-blur-xl sm:gap-10 sm:pl-5">
+      <nav className="flex items-center gap-6 rounded-full border border-line bg-surface/95 py-2 pr-2 pl-3 shadow-[0_10px_30px_rgb(0_0_0/0.35)] md:bg-surface/70 md:backdrop-blur-xl sm:gap-10 sm:pl-5">
         <a href="#top" className="flex items-center gap-2.5 font-semibold text-fg">
           <span className="grid size-8 place-items-center rounded-[10px] bg-linear-to-br from-accent to-cyan text-[13px] font-extrabold">
             {initials(name)}
