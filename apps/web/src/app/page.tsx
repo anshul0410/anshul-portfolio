@@ -7,9 +7,10 @@ import { Skills } from "@/components/Skills";
 import { Work } from "@/components/Work";
 import { getProfile, getSkills, getWork } from "@/lib/api";
 
-// Render on each request so the page always reflects the API.
-// Switch to ISR (`export const revalidate = 300`) once the API is hosted.
-export const dynamic = "force-dynamic";
+// Incremental static regeneration: serve a cached page instantly and refresh it
+// from the API in the background at most every 5 minutes. Visitors never wait
+// on a sleeping API, and if a refresh fails the last good page keeps serving.
+export const revalidate = 300;
 
 export default async function Home() {
   const [profile, skills, work] = await Promise.all([getProfile(), getSkills(), getWork()]);

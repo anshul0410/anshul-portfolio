@@ -1,0 +1,23 @@
+# Render Blueprint for the portfolio API (https://render.com/docs/blueprint-spec).
+# In Render: New → Blueprint → pick this repo. The web app deploys on Vercel.
+services:
+  - type: web
+    name: anshul-portfolio-api
+    runtime: node
+    plan: free
+    region: singapore # closest Render region to India
+    buildCommand: npm ci -w apps/api --include-workspace-root=false && npm run build -w apps/api
+    startCommand: node apps/api/dist/index.js
+    healthCheckPath: /api/health
+    # Only redeploy when the API (or its dependencies) change.
+    buildFilter:
+      paths:
+        - apps/api/**
+        - package-lock.json
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      # Comma-separated origins allowed to call the API from a browser,
+      # e.g. https://anshul-portfolio.vercel.app. Render asks for it on first deploy.
+      - key: CORS_ORIGIN
+        sync: false
