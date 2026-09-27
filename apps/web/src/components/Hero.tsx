@@ -3,6 +3,7 @@ import { AgentCard } from "./AgentCard";
 import { CountUp } from "./motion/CountUp";
 import { PointerGlow } from "./motion/PointerGlow";
 import { Reveal } from "./motion/Reveal";
+import { LinkIcon } from "./icons";
 import { buttonClass, linkProps } from "./ui";
 
 const HIGHLIGHT = "AI-powered experiences";
@@ -60,6 +61,7 @@ export function Hero({ profile }: { profile: Profile }) {
               </a>
               {profile.links.map((link) => (
                 <a key={link.label} {...linkProps(link.href)} className={buttonClass("ghost")}>
+                  <LinkIcon href={link.href} />
                   {link.label}
                 </a>
               ))}

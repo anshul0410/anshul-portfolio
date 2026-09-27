@@ -1,4 +1,5 @@
 import type { Profile } from "@/lib/types";
+import { LinkIcon } from "./icons";
 import { linkProps } from "./ui";
 
 export function Footer({ profile }: { profile: Profile }) {
@@ -11,7 +12,8 @@ export function Footer({ profile }: { profile: Profile }) {
         <ul className="flex gap-6 font-medium">
           {profile.links.map((link) => (
             <li key={link.label}>
-              <a {...linkProps(link.href)} className="transition hover:text-fg">
+              <a {...linkProps(link.href)} className="inline-flex items-center gap-1.5 transition hover:text-fg">
+                <LinkIcon href={link.href} size={15} />
                 {link.label}
               </a>
             </li>

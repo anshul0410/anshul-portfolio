@@ -1,6 +1,7 @@
 import type { Profile } from "@/lib/types";
 import { CopyEmailButton } from "./CopyEmailButton";
 import { Reveal } from "./motion/Reveal";
+import { LinkIcon, MailIcon } from "./icons";
 import { buttonClass, Eyebrow, linkProps } from "./ui";
 
 export function Contact({ profile }: { profile: Profile }) {
@@ -29,6 +30,7 @@ export function Contact({ profile }: { profile: Profile }) {
               {email && (
                 <>
                   <a href={`mailto:${email}`} className={buttonClass("primary")}>
+                    <MailIcon />
                     {email}
                   </a>
                   <CopyEmailButton email={email} />
@@ -36,6 +38,7 @@ export function Contact({ profile }: { profile: Profile }) {
               )}
               {others.map((link) => (
                 <a key={link.label} {...linkProps(link.href)} className={buttonClass("ghost")}>
+                  <LinkIcon href={link.href} />
                   {link.label}
                 </a>
               ))}
