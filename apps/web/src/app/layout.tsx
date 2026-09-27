@@ -16,6 +16,10 @@ export const metadata: Metadata = {
     description: "Portfolio, skills and impact.",
     type: "website",
   },
+  // The preview image itself comes from app/opengraph-image.tsx.
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export const viewport: Viewport = {
