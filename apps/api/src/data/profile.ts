@@ -18,10 +18,9 @@ export const profile: Profile = {
   ],
   highlights: [
     { value: "$67.5M", label: "Revenue contribution thanks to Service Triage" },
-    { value: "$20–25M", label: "Annual support cost saved by Service Triage" },
     { value: "8M+", label: "Customers a year across 5 touchpoints" },
     { value: "~1B", label: "Requests handled at holiday peak" },
-    { value: "50% → 30%", label: "Drop in service abandonment" },
+    { value: "40%", label: "Fewer abandoned service requests (50%\u00a0→\u00a030%)" },
   ],
   links: [
     { label: "GitHub", href: "https://github.com/anshul0410" },
