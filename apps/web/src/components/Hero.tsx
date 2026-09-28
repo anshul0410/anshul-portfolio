@@ -75,8 +75,9 @@ export function Hero({ profile }: { profile: Profile }) {
         <dl className="mt-16 grid grid-cols-2 gap-4 lg:grid-cols-4">
           {profile.highlights.map((h, i) => (
             <Reveal key={h.label} delay={i * 80}>
-              <div className="h-full rounded-[20px] border border-line bg-surface/70 p-6 transition hover:border-accent/60">
-                <dd className="text-3xl font-bold tracking-[-0.02em] whitespace-nowrap text-fg sm:text-4xl">
+              <div className="@container h-full rounded-[20px] border border-line bg-surface/70 p-6 transition hover:border-accent/60">
+                {/* Sized to the card (cqi), so long values fit two-up on narrow phones; max 36px. */}
+                <dd className="text-[clamp(1.125rem,20cqi,2.25rem)] leading-tight font-bold tracking-[-0.02em] whitespace-nowrap text-fg">
                   <CountUp value={h.value} />
                 </dd>
                 <dt className="mt-2 text-sm text-muted">{h.label}</dt>
