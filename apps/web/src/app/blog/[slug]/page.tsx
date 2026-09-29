@@ -101,11 +101,11 @@ export default async function BlogPost({ params }: Props) {
           <hr className="my-12 border-line" />
           <p className="text-muted">
             Written by{" "}
-            <Link href="/" className="text-accent-soft hover:underline">
+            <Link href="/" className="text-accent-soft underline underline-offset-4 hover:text-fg">
               {profile.name}
             </Link>
             , {profile.title} in {profile.location}.{" "}
-            <Link href="/blog" className="text-accent-soft hover:underline">
+            <Link href="/blog" className="text-accent-soft underline underline-offset-4 hover:text-fg">
               More articles →
             </Link>
           </p>
