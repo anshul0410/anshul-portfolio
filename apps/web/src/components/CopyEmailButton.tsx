@@ -17,7 +17,7 @@ export function CopyEmailButton({ email }: { email: string }) {
   }
 
   return (
-    <button type="button" onClick={copy} className={buttonClass("ghost", "min-w-28")} aria-live="polite">
+    <button type="button" onClick={copy} className={buttonClass("ghost", "md", "min-w-28")} aria-live="polite">
       {copied ? "Copied ✓" : "Copy email"}
     </button>
   );

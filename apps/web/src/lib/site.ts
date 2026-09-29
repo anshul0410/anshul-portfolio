@@ -7,5 +7,12 @@ export const SITE_TITLE = "Anshul Akotkar — Senior Software Engineer (React, N
 export const SITE_DESCRIPTION =
   "Anshul Akotkar is a Senior Software Engineer in Bengaluru building AI-powered, agentic experiences with React, Next.js, React Native and Node.js at scale.";
 
+/** Public résumé (no phone number) in apps/web/public. Replace the file to update it. */
+export const RESUME = {
+  href: "/Anshul-Akotkar-Resume.pdf",
+  // Suggested filename when downloaded.
+  download: "Anshul-Akotkar-Resume.pdf",
+} as const;
+
 /** Only the production deployment should be indexed; previews and local runs are not. */
 export const IS_INDEXABLE = !process.env.VERCEL_ENV || process.env.VERCEL_ENV === "production";

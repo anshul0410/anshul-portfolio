@@ -1,7 +1,8 @@
 import type { Profile } from "@/lib/types";
 import { CopyEmailButton } from "./CopyEmailButton";
 import { Reveal } from "./motion/Reveal";
-import { LinkIcon, MailIcon } from "./icons";
+import { RESUME } from "@/lib/site";
+import { DownloadIcon, LinkIcon, MailIcon } from "./icons";
 import { buttonClass, Eyebrow, linkProps } from "./ui";
 
 export function Contact({ profile }: { profile: Profile }) {
@@ -42,6 +43,10 @@ export function Contact({ profile }: { profile: Profile }) {
                   {link.label}
                 </a>
               ))}
+              <a {...RESUME} className={buttonClass("ghost")}>
+                <DownloadIcon />
+                Résumé
+              </a>
             </div>
           </div>
         </div>
