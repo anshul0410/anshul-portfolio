@@ -24,10 +24,10 @@ export const profile: Profile = {
   ],
   personal: {
     intro:
-      "When I'm not shipping code, I'm probably planning the next trip ✈️, hunting down a cuisine I haven't tried yet, or unwinding with music. Total softie for dogs and cats 🐶, and every other pet too (rats excepted).",
+      "When I'm not shipping code, I'm probably planning the next trip ✈️, hunting down a cuisine I haven't tried yet, or unwinding with music. Total softie for dogs and cats 🐶, and every other pet too (except rats).",
     passions: [
       { emoji: "🏏", name: "Cricket", note: "ODIs are appointment viewing when Ro-Ko bat" },
-      { emoji: "🏎️", name: "F1", note: "Lewis is the GOAT, but I love watching Max" },
+      { emoji: "🏎️", name: "F1", note: "Lewis is the GOAT, and I love watching Max" },
       { emoji: "🎾", name: "Tennis", note: "Still missing the Roger–Rafa–Djoker era" },
     ],
     outro: "…and pretty much any other sport, watching or playing.",
