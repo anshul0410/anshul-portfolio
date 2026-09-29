@@ -6,6 +6,7 @@ import { Nav } from "@/components/Nav";
 import { Skills } from "@/components/Skills";
 import { Work } from "@/components/Work";
 import { getProfile, getSkills, getWork } from "@/lib/api";
+import { personJsonLd, serializeJsonLd } from "@/lib/structured-data";
 
 // Incremental static regeneration: serve a cached page instantly and refresh it
 // from the API in the background at most every 5 minutes. Visitors never wait
@@ -17,6 +18,10 @@ export default async function Home() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(personJsonLd(profile, skills)) }}
+      />
       <Nav name={profile.name} />
       <main className="overflow-x-clip">
         <Hero profile={profile} />
