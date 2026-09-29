@@ -3,7 +3,7 @@ title: "Six production bugs I hit building my own portfolio"
 description: "A blank page on phones, content vanishing while scrolling, stale data after every deploy, and three more. What broke in a small Next.js + Node.js site, why, and the fixes."
 date: "2026-09-30"
 tags: ["Next.js", "Performance", "CSS", "Deployment"]
-draft: true
+draft: false
 ---
 
 For a long time, I'd been flirting with the idea of a portfolio that actually reflects who I am: what I do, my professional journey, and the skills I've picked up along the way. For better or worse (mostly worse), I never got around to it. Then inspiration struck out of the blue (a late-night coffee helps), and I finally set up the repo, with an AI pair-programmer doing a lot of the heavy lifting.
