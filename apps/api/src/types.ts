@@ -42,3 +42,27 @@ export interface WorkItem {
   tags: string[];
   featured?: boolean;
 }
+
+export interface Role {
+  company: string;
+  location: string;
+  title: string;
+  /** "YYYY-MM" */
+  start: string;
+  /** "YYYY-MM", or omitted for the current role */
+  end?: string;
+  summary: string;
+  tech: string[];
+}
+
+export interface Education {
+  degree: string;
+  school: string;
+  start: string;
+  end: string;
+}
+
+export interface Experience {
+  roles: Role[];
+  education: Education[];
+}

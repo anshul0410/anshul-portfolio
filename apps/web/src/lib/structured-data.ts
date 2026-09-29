@@ -1,11 +1,11 @@
-import type { Profile, SkillCategory } from "./types";
+import type { Experience, Profile, SkillCategory } from "./types";
 import { SITE_URL } from "./site";
 
 /**
  * schema.org Person + WebSite graph for the homepage. Helps search engines tie
  * searches for the name to this site and to the linked profiles (sameAs).
  */
-export function personJsonLd(profile: Profile, skills: SkillCategory[]) {
+export function personJsonLd(profile: Profile, skills: SkillCategory[], experience?: Experience) {
   const [city, country] = profile.location.split(",").map((part) => part.trim());
   const email = profile.links.find((link) => link.href.startsWith("mailto:"))?.href;
   const personId = `${SITE_URL}/#person`;
@@ -25,6 +25,9 @@ export function personJsonLd(profile: Profile, skills: SkillCategory[]) {
         ...(email && { email }),
         sameAs: profile.links.filter((link) => link.href.startsWith("http")).map((link) => link.href),
         knowsAbout: skills.flatMap((category) => category.skills).slice(0, 20),
+        ...(experience?.education.length && {
+          alumniOf: experience.education.map((edu) => ({ "@type": "CollegeOrUniversity", name: edu.school })),
+        }),
       },
       {
         "@type": "WebSite",

@@ -39,3 +39,25 @@ export interface WorkItem {
   tags: string[];
   featured?: boolean;
 }
+
+export interface Role {
+  company: string;
+  location: string;
+  title: string;
+  start: string;
+  end?: string;
+  summary: string;
+  tech: string[];
+}
+
+export interface Education {
+  degree: string;
+  school: string;
+  start: string;
+  end: string;
+}
+
+export interface Experience {
+  roles: Role[];
+  education: Education[];
+}

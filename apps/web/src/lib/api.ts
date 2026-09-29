@@ -1,4 +1,4 @@
-import type { Profile, SkillCategory, WorkItem } from "./types";
+import type { Experience, Profile, SkillCategory, WorkItem } from "./types";
 
 // Server-side only: read at build time and on background revalidation.
 const API_URL = process.env.API_URL ?? "http://localhost:4000";
@@ -17,3 +17,4 @@ async function get<T>(path: string): Promise<T> {
 export const getProfile = () => get<Profile>("/api/profile");
 export const getSkills = () => get<SkillCategory[]>("/api/skills");
 export const getWork = () => get<WorkItem[]>("/api/work");
+export const getExperience = () => get<Experience>("/api/experience");
