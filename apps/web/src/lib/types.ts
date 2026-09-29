@@ -20,6 +20,15 @@ export interface Profile {
   about: string[];
   highlights: Highlight[];
   links: SocialLink[];
+  /** The "off the clock" bio shown in the About section. Optional so the site
+   *  still renders while the API is one deploy behind the web app. */
+  personal?: Personal;
+}
+
+export interface Personal {
+  intro: string;
+  passions: { emoji: string; name: string; note: string }[];
+  outro?: string;
 }
 
 export interface SkillCategory {

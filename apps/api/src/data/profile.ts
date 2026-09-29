@@ -22,6 +22,16 @@ export const profile: Profile = {
     { value: "~1B", label: "Requests handled at holiday peak" },
     { value: "40%", label: "Fewer abandoned service requests (50%\u00a0→\u00a030%)" },
   ],
+  personal: {
+    intro:
+      "When I'm not shipping code, I'm probably planning the next trip ✈️, hunting down a cuisine I haven't tried yet, or unwinding with music. Total softie for dogs and cats 🐶, and every other pet too (rats excepted).",
+    passions: [
+      { emoji: "🏏", name: "Cricket", note: "ODIs are appointment viewing when Ro-Ko bat" },
+      { emoji: "🏎️", name: "F1", note: "Lewis is the GOAT, but I love watching Max" },
+      { emoji: "🎾", name: "Tennis", note: "Still missing the Roger–Rafa–Djokovic era" },
+    ],
+    outro: "…and pretty much any other sport, watching or playing.",
+  },
   links: [
     { label: "GitHub", href: "https://github.com/anshul0410" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/anshul-akotkar/" },
