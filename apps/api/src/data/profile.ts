@@ -28,7 +28,7 @@ export const profile: Profile = {
     passions: [
       { emoji: "🏏", name: "Cricket", note: "ODIs are appointment viewing when Ro-Ko bat" },
       { emoji: "🏎️", name: "F1", note: "Lewis is the GOAT, but I love watching Max" },
-      { emoji: "🎾", name: "Tennis", note: "Still missing the Roger–Rafa–Djokovic era" },
+      { emoji: "🎾", name: "Tennis", note: "Still missing the Roger–Rafa–Djoker era" },
     ],
     outro: "…and pretty much any other sport, watching or playing.",
   },
