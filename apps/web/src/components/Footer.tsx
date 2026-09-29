@@ -20,6 +20,11 @@ export function Footer({ profile }: { profile: Profile }) {
             </li>
           ))}
           <li>
+            <a href="/blog" className="transition hover:text-fg">
+              Blog
+            </a>
+          </li>
+          <li>
             <a {...RESUME} className="inline-flex items-center gap-1.5 transition hover:text-fg">
               <DownloadIcon size={15} />
               Résumé

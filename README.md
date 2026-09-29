@@ -31,6 +31,26 @@ Open http://localhost:3000. The API is at http://localhost:4000/api/health.
 | `npm run typecheck` | TypeScript checks across workspaces   |
 | `npm test`          | API tests (Node test runner)          |
 
+## Writing an article
+
+Articles are Markdown files in `apps/web/content/blog/`. The file name is the URL: `my-post.md` → `/blog/my-post`.
+
+```markdown
+---
+title: "Post title"
+description: "One or two sentences for the listing, search results and link previews."
+date: "2026-10-01"
+tags: ["Next.js", "Performance"]
+draft: true
+---
+
+Body in Markdown. Code blocks are syntax-highlighted, and ```mermaid blocks become diagrams.
+```
+
+- **Drafts** (`draft: true`) show in local dev and Vercel preview deployments with a *Draft* badge, and are hidden (404) on production. To publish, set `draft: false`, update `date`, and merge.
+- Each post gets its own link preview image, BlogPosting structured data, a sitemap entry and an RSS item (`/feed.xml`).
+- **Cross-posting:** import the live URL into Medium (*Import a story*) or dev.to (Settings → Extensions → RSS feed). Both set the canonical link back to this site.
+
 ## Claude Code MCP servers
 
 `.mcp.json` registers project MCP servers for Claude Code (approve them on first run):
@@ -56,6 +76,7 @@ Content lives in `apps/api/src/data/` — edit `profile.ts`, `skills.ts` and `wo
 
 - [x] Replace placeholder GitHub / LinkedIn / email links in `apps/api/src/data/profile.ts`
 - [x] Add a Selected work section
-- [ ] Add an Experience timeline
+- [x] Add an Experience timeline
+- [x] Blog with Markdown articles, diagrams and RSS
 - [ ] Contact form endpoint (`POST /api/contact`) with rate limiting
 - [ ] Deploy: web on Vercel, API on Render via `render.yaml` (see [docs/TECH_STACK.md](docs/TECH_STACK.md))

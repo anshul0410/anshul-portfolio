@@ -1,24 +1,17 @@
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { getProfile } from "@/lib/api";
 import { MonogramTile } from "@/lib/brand";
+import { OG_BACKGROUND, OG_SIZE, ogFonts } from "@/lib/og";
 
 // Link preview shown when the site is shared (LinkedIn, WhatsApp, Slack, X…).
 // Built from the same API data as the page and refreshed on the same schedule.
 export const alt = "Anshul Akotkar — Senior Software Engineer";
-export const size = { width: 1200, height: 630 };
+export const size = OG_SIZE;
 export const contentType = "image/png";
 export const revalidate = 300;
 
-const font = (file: string) => readFile(join(process.cwd(), "assets/fonts", file));
-
 export default async function OpengraphImage() {
-  const [profile, medium, extraBold] = await Promise.all([
-    getProfile(),
-    font("inter-latin-500-normal.woff"),
-    font("inter-latin-800-normal.woff"),
-  ]);
+  const [profile, fonts] = await Promise.all([getProfile(), ogFonts()]);
   const { currentRole } = profile;
 
   return new ImageResponse(
@@ -31,9 +24,7 @@ export default async function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "64px 80px",
-          backgroundColor: "#070a13",
-          backgroundImage:
-            "radial-gradient(circle at 15% 0%, rgba(99,102,241,0.45), transparent 55%), radial-gradient(circle at 100% 35%, rgba(34,211,238,0.2), transparent 50%)",
+          ...OG_BACKGROUND,
           color: "#eef1f8",
           fontFamily: "Inter",
         }}
@@ -76,12 +67,6 @@ export default async function OpengraphImage() {
         </div>
       </div>
     ),
-    {
-      ...size,
-      fonts: [
-        { name: "Inter", data: medium, weight: 500, style: "normal" },
-        { name: "Inter", data: extraBold, weight: 800, style: "normal" },
-      ],
-    },
+    { ...size, fonts },
   );
 }
