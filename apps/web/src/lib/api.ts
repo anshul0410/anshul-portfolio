@@ -14,7 +14,18 @@ async function get<T>(path: string): Promise<T> {
   return (await res.json()) as T;
 }
 
+// Newer endpoints may not exist yet while Render is still deploying after Vercel
+// has finished: treat a 404 as "no data" so the build and page still succeed.
+async function getIfAvailable<T>(path: string): Promise<T | null> {
+  const res = await fetch(`${API_URL}${path}`, { next: { revalidate: REVALIDATE_SECONDS } });
+  if (res.status === 404) return null;
+  if (!res.ok) {
+    throw new Error(`API request ${path} failed with ${res.status}`);
+  }
+  return (await res.json()) as T;
+}
+
 export const getProfile = () => get<Profile>("/api/profile");
 export const getSkills = () => get<SkillCategory[]>("/api/skills");
 export const getWork = () => get<WorkItem[]>("/api/work");
-export const getExperience = () => get<Experience>("/api/experience");
+export const getExperience = () => getIfAvailable<Experience>("/api/experience");

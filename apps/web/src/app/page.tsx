@@ -26,13 +26,13 @@ export default async function Home() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(personJsonLd(profile, skills, experience)) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(personJsonLd(profile, skills, experience ?? undefined)) }}
       />
       <Nav name={profile.name} />
       <main className="overflow-x-clip">
         <Hero profile={profile} />
         <About profile={profile} />
-        <Experience experience={experience} />
+        {experience && <Experience experience={experience} />}
         <Work items={work} />
         <Skills categories={skills} />
         <Contact profile={profile} />
