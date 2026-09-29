@@ -51,7 +51,9 @@ export function CountUp({ value }: { value: string }) {
   }, [value]);
 
   return (
-    <span ref={ref} aria-label={value}>
+    <span ref={ref}>
+      {/* Screen readers get the final value; the animated digits are hidden from them. */}
+      <span className="sr-only">{value}</span>
       <span aria-hidden>{text}</span>
     </span>
   );

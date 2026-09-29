@@ -24,10 +24,10 @@ function duration(start: string, end?: string) {
   return parts.join(" ");
 }
 
-function RoleItem({ role }: { role: Role }) {
+function RoleItem({ role, delay }: { role: Role; delay: number }) {
   const current = !role.end;
   return (
-    <li className="relative grid gap-3 pl-8 sm:grid-cols-[180px_minmax(0,1fr)] sm:gap-8 sm:pl-10">
+    <Reveal as="li" delay={delay} className="relative grid gap-3 pl-8 sm:grid-cols-[180px_minmax(0,1fr)] sm:gap-8 sm:pl-10">
       {/* Timeline dot; the current role pulses. */}
       <span
         aria-hidden
@@ -55,7 +55,7 @@ function RoleItem({ role }: { role: Role }) {
         <p className="max-w-2xl text-[15px] leading-relaxed text-muted">{role.summary}</p>
         <Chips items={role.tech} />
       </div>
-    </li>
+    </Reveal>
   );
 }
 
@@ -64,9 +64,7 @@ export function Experience({ experience }: { experience: ExperienceData }) {
     <Section id="experience" eyebrow="Experience" title="Where I’ve built things">
       <ol className="relative space-y-12 before:absolute before:top-2 before:bottom-2 before:left-[7.5px] before:w-px before:bg-line">
         {experience.roles.map((role, i) => (
-          <Reveal key={`${role.company}-${role.start}`} delay={i * 60}>
-            <RoleItem role={role} />
-          </Reveal>
+          <RoleItem key={`${role.company}-${role.start}`} role={role} delay={i * 60} />
         ))}
       </ol>
 

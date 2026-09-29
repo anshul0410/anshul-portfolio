@@ -33,7 +33,7 @@ export default async function BlogIndex() {
           </h1>
           <p className="text-lg leading-relaxed text-muted">
             Lessons from shipping web platforms that hold up under load: frontend performance, scaling, reliability and
-            AI agents. <a href="/feed.xml" className="text-accent-soft hover:underline">RSS feed</a>
+            AI agents. <a href="/feed.xml" className="text-accent-soft underline underline-offset-4 hover:text-fg">RSS feed</a>
           </p>
         </Reveal>
 
@@ -42,8 +42,7 @@ export default async function BlogIndex() {
         ) : (
           <ul className="mt-14 space-y-5">
             {posts.map((post, i) => (
-              <Reveal key={post.slug} delay={i * 60}>
-                <li>
+              <Reveal as="li" key={post.slug} delay={i * 60}>
                   <Link
                     href={`/blog/${post.slug}`}
                     className="group block rounded-3xl border border-line bg-surface/70 p-6 transition hover:border-accent/50 sm:p-8"
@@ -70,7 +69,6 @@ export default async function BlogIndex() {
                       </ul>
                     )}
                   </Link>
-                </li>
               </Reveal>
             ))}
           </ul>
