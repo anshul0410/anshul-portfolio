@@ -1,11 +1,12 @@
 import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
+import { Experience } from "@/components/Experience";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Nav } from "@/components/Nav";
 import { Skills } from "@/components/Skills";
 import { Work } from "@/components/Work";
-import { getProfile, getSkills, getWork } from "@/lib/api";
+import { getExperience, getProfile, getSkills, getWork } from "@/lib/api";
 import { personJsonLd, serializeJsonLd } from "@/lib/structured-data";
 
 // Incremental static regeneration: serve a cached page instantly and refresh it
@@ -14,18 +15,24 @@ import { personJsonLd, serializeJsonLd } from "@/lib/structured-data";
 export const revalidate = 300;
 
 export default async function Home() {
-  const [profile, skills, work] = await Promise.all([getProfile(), getSkills(), getWork()]);
+  const [profile, skills, work, experience] = await Promise.all([
+    getProfile(),
+    getSkills(),
+    getWork(),
+    getExperience(),
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(personJsonLd(profile, skills)) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(personJsonLd(profile, skills, experience ?? undefined)) }}
       />
       <Nav name={profile.name} />
       <main className="overflow-x-clip">
         <Hero profile={profile} />
         <About profile={profile} />
+        {experience && <Experience experience={experience} />}
         <Work items={work} />
         <Skills categories={skills} />
         <Contact profile={profile} />

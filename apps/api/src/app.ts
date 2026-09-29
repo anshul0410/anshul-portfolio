@@ -4,6 +4,7 @@ import cors from "cors";
 import { profile } from "./data/profile.js";
 import { skillCategories } from "./data/skills.js";
 import { work } from "./data/work.js";
+import { experience } from "./data/experience.js";
 
 function allowedOrigins(): string[] {
   return (process.env.CORS_ORIGIN ?? "http://localhost:3000")
@@ -32,6 +33,11 @@ export function createApp() {
   app.get("/api/skills", (_req: Request, res: Response) => {
     res.set("Cache-Control", "public, max-age=300");
     res.json(skillCategories);
+  });
+
+  app.get("/api/experience", (_req: Request, res: Response) => {
+    res.set("Cache-Control", "public, max-age=300");
+    res.json(experience);
   });
 
   app.get("/api/work", (_req: Request, res: Response) => {

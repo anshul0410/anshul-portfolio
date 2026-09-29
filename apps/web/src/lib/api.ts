@@ -1,4 +1,4 @@
-import type { Profile, SkillCategory, WorkItem } from "./types";
+import type { Experience, Profile, SkillCategory, WorkItem } from "./types";
 
 // Server-side only: read at build time and on background revalidation.
 const API_URL = process.env.API_URL ?? "http://localhost:4000";
@@ -14,6 +14,18 @@ async function get<T>(path: string): Promise<T> {
   return (await res.json()) as T;
 }
 
+// Newer endpoints may not exist yet while Render is still deploying after Vercel
+// has finished: treat a 404 as "no data" so the build and page still succeed.
+async function getIfAvailable<T>(path: string): Promise<T | null> {
+  const res = await fetch(`${API_URL}${path}`, { next: { revalidate: REVALIDATE_SECONDS } });
+  if (res.status === 404) return null;
+  if (!res.ok) {
+    throw new Error(`API request ${path} failed with ${res.status}`);
+  }
+  return (await res.json()) as T;
+}
+
 export const getProfile = () => get<Profile>("/api/profile");
 export const getSkills = () => get<SkillCategory[]>("/api/skills");
 export const getWork = () => get<WorkItem[]>("/api/work");
+export const getExperience = () => getIfAvailable<Experience>("/api/experience");

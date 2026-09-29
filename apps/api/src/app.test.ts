@@ -47,6 +47,16 @@ describe("portfolio API", () => {
     assert.equal(body.filter((item: { featured?: boolean }) => item.featured).length, 1);
   });
 
+  it("GET /api/experience returns roles newest first", async () => {
+    const res = await fetch(`${base}/api/experience`);
+    assert.equal(res.status, 200);
+    const body = await res.json();
+    assert.ok(body.roles.length > 0 && body.education.length > 0);
+    const starts = body.roles.map((role: { start: string }) => role.start);
+    assert.deepEqual(starts, [...starts].sort().reverse());
+    assert.equal(body.roles.filter((role: { end?: string }) => !role.end).length, 1);
+  });
+
   it("unknown routes return 404 JSON", async () => {
     const res = await fetch(`${base}/api/nope`);
     assert.equal(res.status, 404);
