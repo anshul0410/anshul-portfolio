@@ -3,7 +3,8 @@ import { AgentCard } from "./AgentCard";
 import { CountUp } from "./motion/CountUp";
 import { PointerGlow } from "./motion/PointerGlow";
 import { Reveal } from "./motion/Reveal";
-import { LinkIcon } from "./icons";
+import { RESUME } from "@/lib/site";
+import { DownloadIcon, LinkIcon } from "./icons";
 import { buttonClass, linkProps } from "./ui";
 
 const HIGHLIGHT = "AI-powered experiences";
@@ -55,12 +56,16 @@ export function Hero({ profile }: { profile: Profile }) {
               <Tagline text={profile.tagline} />
             </p>
             <p className="max-w-[580px] text-[17px] leading-relaxed text-muted">{profile.summary}</p>
-            <div className="flex flex-wrap gap-3 pt-2">
-              <a href="#work" className={buttonClass("primary")}>
+            <div className="flex flex-wrap gap-2 pt-2">
+              <a href="#work" className={buttonClass("primary", "compact")}>
                 See my work <span aria-hidden>→</span>
               </a>
+              <a {...RESUME} className={buttonClass("ghost", "compact")}>
+                <DownloadIcon />
+                Résumé
+              </a>
               {profile.links.map((link) => (
-                <a key={link.label} {...linkProps(link.href)} className={buttonClass("ghost")}>
+                <a key={link.label} {...linkProps(link.href)} className={buttonClass("ghost", "compact")}>
                   <LinkIcon href={link.href} />
                   {link.label}
                 </a>

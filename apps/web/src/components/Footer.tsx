@@ -1,5 +1,6 @@
 import type { Profile } from "@/lib/types";
-import { LinkIcon } from "./icons";
+import { RESUME } from "@/lib/site";
+import { DownloadIcon, LinkIcon } from "./icons";
 import { linkProps } from "./ui";
 
 export function Footer({ profile }: { profile: Profile }) {
@@ -18,6 +19,12 @@ export function Footer({ profile }: { profile: Profile }) {
               </a>
             </li>
           ))}
+          <li>
+            <a {...RESUME} className="inline-flex items-center gap-1.5 transition hover:text-fg">
+              <DownloadIcon size={15} />
+              Résumé
+            </a>
+          </li>
         </ul>
       </div>
     </footer>

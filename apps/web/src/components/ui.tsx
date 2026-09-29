@@ -1,7 +1,17 @@
 export type ButtonVariant = "primary" | "ghost";
+export type ButtonSize = "md" | "compact" | "pill";
 
+// Size-related utilities live only in `buttonSizes`: two conflicting Tailwind
+// utilities (e.g. px-5 and px-4) on one element resolve by stylesheet order,
+// not class order, so sizes can't be overridden by appending classes.
 const buttonBase =
-  "inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-[15px] font-semibold text-fg transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-soft";
+  "inline-flex items-center justify-center gap-2 font-semibold text-fg transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-soft";
+
+const buttonSizes: Record<ButtonSize, string> = {
+  md: "rounded-xl px-5 py-3 text-[15px]",
+  compact: "rounded-xl px-3.5 py-3 text-[15px]",
+  pill: "rounded-full px-4 py-2 text-sm",
+};
 
 const buttonVariants: Record<ButtonVariant, string> = {
   primary:
@@ -9,8 +19,8 @@ const buttonVariants: Record<ButtonVariant, string> = {
   ghost: "border border-line bg-surface/60 hover:border-accent/60 hover:bg-raised",
 };
 
-export function buttonClass(variant: ButtonVariant = "primary", extra = "") {
-  return `${buttonBase} ${buttonVariants[variant]} ${extra}`;
+export function buttonClass(variant: ButtonVariant = "primary", size: ButtonSize = "md", extra = "") {
+  return `${buttonBase} ${buttonSizes[size]} ${buttonVariants[variant]} ${extra}`;
 }
 
 /** Link props for a profile link: external links open in a new tab. */

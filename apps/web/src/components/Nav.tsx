@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { RESUME } from "@/lib/site";
+import { DownloadIcon } from "./icons";
 import { buttonClass } from "./ui";
 
 const links = [
@@ -60,9 +62,19 @@ export function Nav({ name }: { name: string }) {
             </li>
           ))}
         </ul>
-        <a href="#contact" className={buttonClass("primary", "rounded-full px-4 py-2 text-sm")}>
-          Get in touch
-        </a>
+        <div className="flex items-center gap-1.5">
+          <a
+            {...RESUME}
+            aria-label="Download résumé (PDF)"
+            className="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-muted transition hover:bg-raised hover:text-fg"
+          >
+            <DownloadIcon size={16} />
+            <span className="hidden sm:inline">Résumé</span>
+          </a>
+          <a href="#contact" className={buttonClass("primary", "pill")}>
+            Get in touch
+          </a>
+        </div>
       </nav>
     </header>
   );
