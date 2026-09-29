@@ -6,7 +6,7 @@ tags: ["Next.js", "Performance", "CSS", "Deployment"]
 draft: true
 ---
 
-<!-- TODO(anshul): Open with one or two lines in your own voice. Why build a portfolio from scratch instead of using a template? -->
+For a long time, I'd been flirting with the idea of a portfolio that actually reflects who I am: what I do, my professional journey, and the skills I've picked up along the way. For better or worse (mostly worse), I never got around to it. Then inspiration struck out of the blue (a late-night coffee helps), and I finally set up the repo, with an AI pair-programmer doing a lot of the heavy lifting.
 
 I build large, high-traffic systems at work, so I assumed a personal portfolio would be the easy part. It wasn't. A two-app site with one page still found six different ways to break in production, and every one of them is a smaller version of a problem that shows up in much bigger systems.
 
@@ -71,7 +71,7 @@ The component also marks anything already on screen as visible *before* setting 
 
 Backdrop blur and the looping animations now only apply from tablet width up (`md:backdrop-blur-xl`, `md:animate-drift`). At phone width the page went from 5 blur filters to 0.
 
-<!-- TODO(anshul): Add how it felt on your phone after the fix (smooth? which phone?). A real device note makes this section credible. -->
+With the fix deployed, everything finally renders as it should. Scrolling is smooth as butter on my iPhone 17 Pro, with no more blank tiles, and the glows and cards still look sharp. Most importantly, the flicker is gone, which was a relief.
 
 **Lesson:** blur is one of the most expensive things you can ask a browser to paint. Budget for it like you'd budget for network requests.
 
@@ -178,6 +178,6 @@ I reproduced CI locally by deleting `next-env.d.ts` and `.next` first: 2 errors 
 - **Deploys are a distributed system.** Any two services that ship separately will, at some point, be running mismatched versions.
 - **Measure, then fix.** Most of these took minutes to fix and much longer to understand. Every fix above came with a check that proved it: a count, a width, a clean build.
 
-<!-- TODO(anshul): Close with your own line, e.g. what you're building next on the site, or a question for readers. -->
+I have a few more project ideas in the pipeline, so expect more articles on what I learn building them. And if you've hit any of these bugs yourself, I'd love to hear how you fixed them.
 
 The site's source is on [GitHub](https://github.com/anshul0410/anshul-portfolio) if you want to see any of these fixes in context.
